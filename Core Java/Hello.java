@@ -680,52 +680,272 @@
 
 
 
-//when we have a number of methods with the same name and different parameters(type/order/number), we call it method overloading
-//same for constructor overloading
- class House{
-    private String flat;
-    private String condition;
-    private String location;
+// //when we have a number of methods with the same name and different parameters(type/order/number), we call it method overloading
+// //same for constructor overloading
+//  class House{
+//     private String flat;
+//     private String condition;
+//     private String location;
 
-   //default constructor
-    public House(){
-        flat = "4bhk";
-    }
+//    //default constructor
+//     public House(){
+//         flat = "4bhk";
+//     }
    
-    //parameterised constructor
-    public House(String furnish, String direction){ 
-        flat = "4bhk";
-        condition = furnish; //if condition and furnish had been named same, we would have used this keyword
-        location = direction;
-    }
-    /*
-    eg,
+//     //parameterised constructor
+//     public House(String furnish, String direction){ 
+//         flat = "4bhk";
+//         condition = furnish; //if condition and furnish had been named same, we would have used this keyword
+//         location = direction;
+//     }
+//     /*
+//     eg,
 
-     public House(String condition, String location){ 
-        flat = "4bhk";
-        this.condition = condition; 
-        this.location = location;
-    */
+//      public House(String condition, String location){ 
+//         flat = "4bhk";
+//         this.condition = condition; 
+//         this.location = location;
+//     */
 
-    public String getFlat(){
-        return flat;
-    }
+//     public String getFlat(){
+//         return flat;
+//     }
 
-    public String getFurnish(){
-        return condition;
-    }
+//     public String getFurnish(){
+//         return condition;
+//     }
 
-    public String getDirection(){
-        return location; //whatevr we return HAS to be an instance variable i.e declared under class (not a local varibale-> declared even under class method )
-    }
-}
+//     public String getDirection(){
+//         return location; //whatevr we return HAS to be an instance variable i.e declared under class (not a local varibale-> declared even under class method )
+//     }
+// }
 
- class Hello{
-    public static void main(String args[]){
-        House home = new House();
-        House home2 = new House("furnished", "south-facing");
-        System.out.println(home.getFlat() + " housing"); //4bhk housing
-        System.out.println(home2.getFlat() + " housing, Condition: "+home2.getFurnish()+", Location: "+home2.getDirection()); //4bhk housing, Condition: furnished, Location: south-facing
-        System.out.println(home.getFlat() + " housing, Condition: "+home.getFurnish()+", Location: "+home.getDirection()); //4bhk housing, Condition: null, Location: null
-    }
-}
+//  class Hello{
+//     public static void main(String args[]){
+//         House home = new House();
+//         House home2 = new House("furnished", "south-facing");
+//         System.out.println(home.getFlat() + " housing"); //4bhk housing
+//         System.out.println(home2.getFlat() + " housing, Condition: "+home2.getFurnish()+", Location: "+home2.getDirection()); //4bhk housing, Condition: furnished, Location: south-facing
+//         System.out.println(home.getFlat() + " housing, Condition: "+home.getFurnish()+", Location: "+home.getDirection()); //4bhk housing, Condition: null, Location: null
+//     }
+// }
+
+
+
+
+// class Mobile{
+// 	String brand;
+// 	int price;
+// 	String network;
+// //	String name;
+// 	static String name; //static variable
+	
+// 	public void show() {
+// 		System.out.println(brand+" : "+price+" : "+name);
+// 	}
+	
+// }
+
+// public class Hello {
+// 	public static void main(String[] args) 
+// 	{
+// 		Mobile obj1=new Mobile();
+// 		obj1.brand="Apple";
+// 		obj1.price=1500;
+// 		//obj1.name="SmartPhone";  //bad way
+// 		Mobile.name="SmartPhone"; //static way of calling static variables
+		
+// 		Mobile obj2=new Mobile();
+// 		obj2.brand="Samsung";
+// 		obj2.price=1700;
+// 		//obj2.name="SmartPhone"; 
+// 		Mobile.name="SmartPhone";
+		
+// 		//obj1.name="Phone";
+// 		Mobile.name="Phone";// value persists
+		
+// 		obj1.show();
+// 		obj2.show();
+// 	}
+// }
+// a static variable is always shared by all the objects.
+// we will not be having individual static variable for each object.
+// static variable is a common variable shared by all the objects.
+// the value of static variable persists.
+// static variables are called by classname (static way) , not the object name.
+// we can use static variables in non static methods directly.
+
+
+
+// all instance variables public
+// class Mobile{
+// 	static String brand;
+// 	String color;
+// 	String space;
+// 	String name;
+// 	Mobile(String color, String space){
+// 		this.color=color;
+// 		this.space=space;
+// 	}
+// 	public String getColor(){
+// 		return color;
+// 	}
+// 	public String getSpace(){
+// 		return space;
+// 	}
+// 	public void show(){
+// 		System.out.println("product: "+Mobile.brand+" "+this.name+" details: "+this.color+", "+this.space); 
+// 	}
+// }
+
+// public class Hello{
+// 	public static void main(String args[]){
+// 		Mobile iphone11 = new Mobile("black", "128GB");
+// 		iphone11.name="iphone11";
+// 		Mobile iphone13 = new Mobile("white", "256GB");
+// 		iphone13.name="iphone13";
+// 		Mobile iphone8 = new Mobile("rose gold", "128GB");
+// 		iphone8.name="iphone8";
+// 		Mobile.brand="Apple";
+// 		iphone11.show();
+// 		iphone13.show();
+// 		iphone8.show();
+		
+// 		System.out.println("product: "+Mobile.brand+" "+iphone11.name+" details: "+iphone11.color+", "+iphone11.space); //can do this since all are public
+		
+// 	}
+// }
+// product: Apple iphone11 details: black, 128GB
+// product: Apple iphone13 details: white, 256GB
+// product: Apple iphone8 details: rose gold, 128GB
+// product: Apple iphone11 details: black, 128GB
+
+
+
+
+// all private except static
+// class Mobile{
+// 	 static String brand;
+// 	private String space;
+// 	private String color;
+// 	public String name;
+// 	Mobile(String color, String space){
+// 		this.color=color;
+// 		this.space=space;
+// 	}
+// 	public String getColor(){
+// 		return color;
+// 	}
+// 	public String getSpace(){
+// 		return space;
+// 	}
+// 	// public void show(){
+// 	// 	System.out.println("product: "+Mobile.brand+" "+this.name+" details: "+this.color+", "+this.space); //fetching data in 1 line
+// 	// }
+// }
+
+// public class Hello{
+// 	public static void main(String args[]){
+// 		Mobile iphone11 = new Mobile("black", "128GB");
+// 		iphone11.name="iphone11";
+// 		Mobile iphone13 = new Mobile("white", "256GB");
+// 		iphone13.name="iphone13";
+// 		Mobile iphone8 = new Mobile("rose gold", "128GB");
+// 		iphone8.name="iphone8";
+// 		Mobile.brand = "Apple";
+// 		//iphone11.show();
+// 		//iphone13.show();
+// 		//iphone8.show();
+		
+// 		System.out.println("product: "+Mobile.brand+" "+iphone11.name+" details: "+iphone11.getColor()+", "+iphone11.getSpace()); 
+// 		System.out.println("product: "+Mobile.brand+" "+iphone8.name+" details: "+iphone8.getColor()+", "+iphone8.getSpace()); 
+// 		System.out.println("product: "+Mobile.brand+" "+iphone13.name+" details: "+iphone13.getColor()+", "+iphone13.getSpace()); 
+// 	}
+// }
+// // product: Apple iphone11 details: black, 128GB
+// // product: Apple iphone8 details: rose gold, 128GB
+// // product: Apple iphone13 details: white, 256GB
+
+
+
+
+// Static method, how to access instance variables inside static methods?
+// static methods can be called with the help of classname (statically)
+// we can only use static variables inside static methods.
+// we cannot use instance variables inside static methods directly. we can do it indirectly by passing the object inside static method. 
+
+// class Water{
+// 	int price;
+// 	String taste;
+// 	static String edition;
+// 	Water(int price, String taste){
+// 		this.price=price;
+// 		this.taste=taste;
+// 	}
+// 	public static void show(Water sample){
+// 		System.out.println("this water comes in "+edition+" edition & this sample tastes "+sample.taste+" costing price $"+sample.price);
+// 	}
+// }
+// public class Hello{
+// 	public static void main(String args[]){
+// 		Water water1 = new Water(30, "expensive");
+// 		Water water2 = new Water(20, "cheap");
+// 		Water.edition="limited";
+// 		Water.show(water1); //this water comes in limited edition & this sample tastes expensive costing price $30
+// 		Water.show(water2); //this water comes in limited edition & this sample tastes cheap costing price $20
+// 	}
+// }
+
+
+
+// class Water{
+// 	int price;
+// 	String taste;
+// 	static String edition;
+// 	Water(int price, String taste){
+// 		this.price=price;
+// 		this.taste=taste;
+// 		System.out.println("1 -> inside Constructor");
+// 	}
+
+// 	static{  //static block for initialising static variables, is called only once no matter how many different objects call it whatever times.
+// 		edition="limited";
+// 		System.out.println("2 -> inside static");
+// 	}
+
+// 	public static void show(Water sample){
+// 		System.out.println("3 -> this water comes in "+edition+" edition & this sample tastes "+sample.taste+" costing price $"+sample.price);
+// 	}
+// }
+// public class Hello{
+// 	public static void main(String args[]){
+// 		Water water1 = new Water(30, "expensive");
+// 		Water water2 = new Water(20, "cheap");
+// 		//Water.edition="limited"; initialising this in class
+// 		Water.show(water1); 
+// 		Water.show(water2); 
+// 	}
+// }
+
+
+
+// //when we want the class to load irrespective of object creation
+// class Hey{
+// 	static int kids;
+	
+// 		Hey(){
+// 			System.out.println("inside constructor"); //never called since no object creation
+// 		}
+
+// 	static{
+// 		kids = 3;
+// 		System.out.println("inside static block");
+// 	}
+// }
+
+// public class Hello{
+// 	public static void main(String[] args) throws ClassNotFoundException {
+// 		Class.forName("Hey");
+// 	}
+// }
+// //inside static block
