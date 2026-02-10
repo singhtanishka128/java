@@ -1525,3 +1525,331 @@
 // }
 
 
+//import.tools.*;  to import all the files from tools folder, not folders
+//when we are creating a project,suppose im asked to create a package, 
+//eg, if im making a library, i'll reverse the domain name to make it unique,
+//let's say Google
+//and I'm making a calculator or advanced calculator,
+//I will say com.google.calculation.
+//Now, this is my package name
+
+
+
+//access modifiers:
+//to access methods outside the package, it should always be made public
+//within the same package, we can access methods without mentioning access modifier
+//methods are generally made public majority of the times
+//see table in notion
+// The general idea is in one file you should have only one class.
+// try to make your class public,
+// try to keep your variables, the instance variables private.
+// The methods most of the time will be public.
+// But if you think there is a method or a variable which should be accessed only in the subclass
+// of other packages, use protected,
+// try to avoid default.
+// Default is not something we should be using.
+
+
+
+//Dynamic Method Dispatch
+// class A {
+//     public void show(){
+//         System.out.println("in A show");
+//     }
+// }
+// class B extends A {
+
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         // B obj = new B();
+//         // obj.show(); //in A show
+
+//         A obj = new B(); //reference varible (obj) of type A, implementation is B (object of B)
+//         obj.show(); // in A show
+//     }
+// }
+
+
+
+// class A {
+//     public void show(){
+//         System.out.println("in A show");
+//     }
+// }
+// class B extends A {
+//      public void show(){
+//         System.out.println("in B show");
+//     }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         // B obj = new B();
+//         // obj.show(); //in A show
+
+//         A obj = new B(); 
+//         obj.show(); // in B show
+//     }
+//}
+
+
+//this is like
+// A obj = new A(); //object A created in heap memory
+// obj.show();
+
+// obj = new B(); //new object created in heap memory, obj unlinks to object A and gets attatched to object B
+// obj.show();
+
+//so irrespective of what type of reference variable we have created, it all depends on what object we have
+//this is run time polymorphism and can only happen in inheritance
+//we can only have child objects for parent variable
+
+// class A
+// {
+// 	public void show()
+// 	{
+// 		System.out.println("in A show");
+// 	}
+// }
+
+// class B extends A
+// {
+// 	public void show()
+// 	{
+// 		System.out.println("in B show");
+// 	}
+// }
+
+// class C extends A
+// {
+// 	public void show()
+// 	{
+// 		System.out.println("in C show");
+// 	}
+// }
+
+// public class Hello{
+// 	public static void main(String[] args) {
+		
+// 		A obj=new A();
+// 		obj.show();
+		
+// 		obj=new B();
+// 		obj.show();
+		
+// 		obj=new C();
+// 		obj.show();
+//     }
+// }
+
+
+
+//final keyword = 
+// 1) to make values constant, 
+// 2) stopping inheritance
+// 3) stop method overriding
+
+//final int num=8;
+//num=9; //throws error
+
+//  final class A{ //no one can extend it
+//     public void show(){
+//         System.out.println("in A");
+//     }
+//  }
+//  class B extends A{ //throws error
+
+//  }
+//  public class Hello {
+//     public static void main(String[] args) {
+        
+//     }
+//  }
+
+
+
+
+// class A{
+//     public void show(){
+//         System.out.println("by A show");
+//     }
+
+//     public void add(int n1, int n2){
+//         System.out.println(n1 + n2);
+//     }
+// }
+
+// class B extends A{
+//     public void show(){
+//         System.out.println("by B show");
+//     }
+// }
+
+// public class Hello {
+//     public static void main(String[] args) {
+//         B obj = new B();
+//         obj.show(); //B uses A class implementation and steals the credit 
+//         //with the help of method overriding
+//         obj.add(2,3);
+//     }
+// }
+//to stop this overrriding we can make the method final, 
+
+
+// class A{
+//     public final void show(){
+//         System.out.println("by A show");
+//     }
+
+//     public void add(int n1, int n2){
+//         System.out.println(n1 + n2);
+//     }
+// }
+
+// class B extends A{
+//     public void show(){//throws error
+//         System.out.println("by B show");
+//     }
+// }
+
+// public class Hello {
+//     public static void main(String[] args) {
+//         B obj = new B();
+//         obj.show(); 
+//         obj.add(2,3);
+//     }
+// }
+
+// class Laptop{
+//         String model;
+//         int price;
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         Laptop obj = new Laptop();
+//         obj.model = "Lenevo yoga";
+//         obj.price = 1000;
+//         //System.out.println(obj);//Laptop@7344699f
+//         System.out.println(obj.toString()); //Laptop@7344699f = classname + @ + hexadecimal hashcode
+//     }
+// }
+//printing obj is same as printing obj.toString
+//defaultly it looks up to the superclass and produces the hashcode but if we explicitly
+//define the toString method then it will call this instead of superclass
+
+
+
+
+// class Laptop{
+//         String model;
+//         int price;
+
+//         public String toString(){
+//            // return "hey";
+//            return model+":"+price;
+//         }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         Laptop obj = new Laptop();
+//         obj.model = "Lenevo yoga";
+//         obj.price = 1000;
+//         //System.out.println(obj.toString());  //hey
+//         System.out.println(obj); //Lenevo yoga:1000
+//     }
+// }
+
+// class Laptop{
+//         String model;
+//         int price;
+
+//         public String toString(){
+//            return model+":"+price;
+//         }
+
+//         public boolean equals(Laptop otherObject){
+//             if(otherObject.price==this.price && otherObject.model.equals(this.model)){
+//                 return true;
+//             }else{
+//                 return false;
+//             }
+
+//         }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         Laptop obj1 = new Laptop();
+//         obj1.model = "Lenevo yoga";
+//         obj1.price = 1000;
+//         Laptop obj2 = new Laptop();
+//         obj2.model= "Lenevo yoga";
+//         obj2.price= 1000;
+//         //boolean result = obj1==obj2; false
+//         boolean result = obj1.equals(obj2); //false since .equals compares objects by hexadecimal so we modify .equals
+//         System.out.println(result); //true
+//     }
+// }
+//when we compare objects, we compare the value as well as the hashcode so we shouldnt modify the equals method instead
+
+
+
+
+class Laptop{
+        String model;
+        int price;
+
+        public String toString(){
+           return model+":"+price;
+        }
+
+        
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((model == null) ? 0 : model.hashCode());
+            result = prime * result + price;
+            return result;
+        }
+
+        
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            if (getClass() != obj.getClass())
+                return false;
+            Laptop other = (Laptop) obj;
+            if (model == null) {
+                if (other.model != null)
+                    return false;
+            } else if (!model.equals(other.model))
+                return false;
+            if (price != other.price)
+                return false;
+            return true;
+        }
+
+        
+
+}
+
+public class Hello{
+    public static void main(String[] args) {
+        Laptop obj1 = new Laptop();
+        obj1.model = "Lenevo yoga";
+        obj1.price = 1000;
+        Laptop obj2 = new Laptop();
+        obj2.model= "Lenevo yoga";
+        obj2.price= 1000;
+        boolean result = obj1.equals(obj2); 
+        System.out.println(result); 
+    }
+}
+//to generate hashcodes, right click source action, generate hashcode 
+//similar for toString
