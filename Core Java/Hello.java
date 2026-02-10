@@ -949,3 +949,579 @@
 // 	}
 // }
 // //inside static block
+
+
+
+// Naming Conventions: 
+// classes and interfaces = Data   (first letter capital)
+// variables and methods = data, data()  (all small)
+// constants = DATA  (all capital)
+
+// for multiple words java developers use camelCasing like
+// showMyMarks() - method
+// MyData - could be class/interface 
+// MyData() - constructor
+// MYDATA - constant
+
+
+
+
+// class A{
+//     A(){
+//         System.out.println("object created");
+//     }
+
+//     public void show(){
+//         System.out.println("obj for A");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         A obj = new A(); //referenced object
+//         obj.show();
+//     }
+// }
+// object created
+// obj for A
+
+//here obj is not the object. obj is a reference variable. object creation happens in new A().
+//this reference variable from the stack points to the address of the object created in the heap memory.
+//object with a reference variable - referenced object
+
+
+
+
+//when we dont create a reference variable and still do object creation then that object in the heap memory is called an
+//anonymous object
+//object without a reference variable
+// class A{
+//     A(){
+//         System.out.println("object created");
+//     }
+
+//     public void show(){
+//         System.out.println("obj for A");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         new A(); //anonymous object
+//     }
+// }
+// object created
+
+//cannot be reused again, we can do new A().show() but this creates another new object while calling the show
+
+
+
+//inheritance
+//upper class = parent class = super class
+//derived class = child class = sub class
+//redundancy = repeatition of code
+//redundancy is a crime
+
+//keyword for inheriting -> extends
+// class Child extends Parent{
+
+// }
+
+
+
+//single level inheritance: father-> son
+// class School{
+// public void subjects(){
+//     System.out.println("total 10 subjects");
+// }
+// }
+
+// class Student extends School{
+// public void identify(){
+//     System.out.println("1 id card for each");
+// }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         Student obj = new Student();
+//             obj.subjects();
+//             obj.identify();
+//     }
+// }
+// total 10 subjects
+// 1 id card for each
+
+
+
+//multi level inheritance : grandfather-> father-> son
+// class School{
+// public void subjects(){
+//     System.out.println("total 10 subjects");
+// }
+// }
+
+// class Student extends School{
+// public void identify(){
+//     System.out.println("1 id card for each");
+// }
+// }
+
+// class Tiffin extends Student{
+//     public void tiffin(){
+//         System.out.println("we love break times");
+//     }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+
+//         Tiffin obj2 = new Tiffin();
+//             obj2.tiffin();
+//             obj2.subjects();
+//             obj2.identify();
+//     }
+// }
+// we love break times
+// total 10 subjects
+// 1 id card for each
+
+
+
+// multiple inheritance: 2 fathers -> 1 son
+// java doesnt support multiple inheritance
+
+
+
+
+
+// this and super method
+
+// class A{
+//     public A(){
+//         System.out.println("in A"); //1. calls this first
+//     }
+// }
+// class B extends A {
+//     public B(){ 
+//         System.out.println("in B");// 2. then this
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B();
+//     }
+// }
+// in A
+// in B
+
+
+
+// class A{
+//     public A(){
+//         System.out.println("in A"); 
+//     }
+// }
+// class B extends A {
+//     public B(){
+//         System.out.println("in B");
+//     }
+//     public B(int n){
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B(5);
+//     }
+// }
+// in A
+// in B int
+// how?
+
+
+
+// class A{
+//     public A(){
+//         System.out.println("in A"); 
+//     }
+//     public A(int n){
+//         System.out.println("in A int"); 
+//     }
+// }
+// class B extends A {
+//     public B(){
+//         System.out.println("in B");
+//     }
+//     public B(int n){
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B(5);
+//     }
+// }
+// in A
+// in B int
+
+// every constructor in Java has a method which is there,
+// even if you don't mention
+// that method is super 
+// super method more like john cena we cant see it
+
+
+
+// class A{
+//     public A(){ //
+//         super();
+//         System.out.println("in A"); 
+//     }
+//     public A(int n){
+//         super();
+//         System.out.println("in A int"); 
+//     }
+// }
+// class B extends A {
+//     public B(){
+//         super();
+//         System.out.println("in B");
+//     }
+//     public B(int n){ //
+//         super(); //
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B(5);
+//     }
+// }
+
+//in A
+//in B int
+//super() methods means call the default constructor of the super class
+
+
+
+// class A{
+//     public A(){
+//         super();
+//         System.out.println("in A"); 
+//     }
+//     public A(int n){ //
+//         super();
+//         System.out.println("in A int"); 
+//     }
+// }
+// class B extends A {
+//     public B(){
+//         super();
+//         System.out.println("in B");
+//     }
+//     public B(int n){ //
+//         super(n);  //
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B(5);
+//     }
+// }
+// in A int
+// in B int
+//if we want to call the parameterised constructor of superclass, then pass a parameter in the super class
+
+
+
+// class A{
+//     public A(){ //
+//         super();
+//         System.out.println("in A"); 
+//     }
+//     public A(int n){
+//         super();
+//         System.out.println("in A int"); 
+//     }
+// }
+// class B extends A {
+//     public B(){ //
+//         super(); //
+//         System.out.println("in B");
+//     }
+//     public B(int n){
+//         super(n);
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B();
+//     }
+// }
+// in A
+// in B 
+
+// but now i want (in A int) first then (in B) 
+
+
+
+
+// class A extends Object{
+//     public A(){
+//         super(); // -> this calls the default constructor of object class
+//         System.out.println("in A"); 
+//     }
+//     public A(int n){ //
+//         super();
+//         System.out.println("in A int"); 
+//     }
+// }
+// class B extends A {
+//     public B(){ //
+//         super(5); //
+//         System.out.println("in B");
+//     }
+//     public B(int n){
+//         super(n);
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B();
+//     }
+// }
+// in A int
+// in B
+
+// every class in java extends the Object class, this Object class is again inbuilt/invisible/john cena, its there even if even if we dont mention
+
+
+
+// i want to call both the constructors of B class? we'll use this() method
+// class A extends Object{
+//     public A(){
+//         super(); 
+//         System.out.println("in A"); 
+//     }
+//     public A(int n){ 
+//         super();
+//         System.out.println("in A int"); 
+//     }
+// }
+// class B extends A {
+//     public B(){ 
+//         super(); 
+//         System.out.println("in B");
+//     }
+//     public B(int n){
+//         this();
+//         System.out.println("in B int");
+//     }
+// }
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B(8);
+//     }
+// }
+// in A
+// in B
+// in B int
+
+
+
+// class A{
+//     public void show(){
+//         System.out.println("in A show");
+//     }
+
+//     public void config(){
+//         System.out.println("in A config");
+//     }
+// }
+
+// class B extends A{
+//     public void show1(){
+//         System.out.println("in B show");
+//     }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B();
+//         obj.show();
+//         obj.show1();
+//         obj.config();
+//     }
+// }
+// in A show
+// in B show
+// in A config
+//now i want both A and B class to have same name for show()
+
+
+
+
+// //method overriding
+// class A{
+//     public void show(){
+//         System.out.println("in A show");
+//     }
+
+//     public void config(){
+//         System.out.println("in A config");
+//     }
+// }
+
+// class B extends A{
+//     public void show(){
+//         System.out.println("in B show");
+//     }
+// }
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         B obj = new B();
+//         obj.show(); //here B's show overrides A's show
+//         obj.config();
+//     }
+// }
+// //method overriding -> same name, same parameter, different behaviour
+
+
+
+
+//package: 
+
+
+// class Calc{
+//     public int add(int n1, int n2){
+//         return n1 + n2;
+//     }
+//     public int sub(int n1, int n2){
+//         return n1 - n2;
+//     }
+// }
+
+// class AdvCalc extends Calc{
+//     public int multi(int n1, int n2){
+//         return n1 * n2;
+//     }
+//     public int div(int n1, int n2){
+//         return (int) n1 / n2;
+//     }
+// }
+
+// public class Sample{
+//     public static void main(String[] args) {
+//         AdvCalc obj = new AdvCalc();
+//         int res = obj.add(10,5);
+//         System.out.println(res);
+//         int res2 = obj.sub(10,5);
+//         System.out.println(res2);
+//         int res3 = obj.multi(10,5);
+//         System.out.println(res3);
+//         int res4 = obj.div(10,5);
+//         System.out.println(res4);
+//     }
+// }
+//suppose i have these code in Sample.java, im easily able to perform inheritance
+//but what if i just have 
+
+// public class Sample{
+//     public static void main(String[] args) {
+//         AdvCalc obj = new AdvCalc();
+//         int res = obj.add(10,5);
+//         System.out.println(res);
+//         int res2 = obj.sub(10,5);
+//         System.out.println(res2);
+//         int res3 = obj.multi(10,5);
+//         System.out.println(res3);
+//         int res4 = obj.div(10,5);
+//         System.out.println(res4);
+//     }
+// }
+
+//this in Sample.java and
+
+// class AdvCalc extends Calc{
+//     public int multi(int n1, int n2){
+//         return n1 * n2;
+//     }
+//     public int div(int n1, int n2){
+//         return (int) n1 / n2;
+//     }
+// }
+
+//this in AdvCalc.java and 
+
+// class Calc{
+//     public int add(int n1, int n2){
+//         return n1 + n2;
+//     }
+//     public int sub(int n1, int n2){
+//         return n1 - n2;
+//     }
+// }
+
+//this in Calc.java,
+//since AdvCalc and Calc are made public we would still be able to perform inheritance but 
+//in complex projects where codes are placed in different files
+//we place them inside one folder to ease the complexity of the project so we decide to shift AdvCalc.java and Calc.java inside 
+//tools folder such that
+//   tools-->
+//          |
+//          ---> AdvCalc.java 
+//          ---> Calc.java 
+//   Hello.java
+
+// then we need to add package nameOfFolder;
+
+// AdvCalc.java:
+
+// package tools;
+
+// public class AdvCalc extends Calc{
+//     public int multi(int n1, int n2){
+//         return n1 * n2;
+//     }
+//     public int div(int n1, int n2){
+//         return (int) n1 / n2;
+//     }
+// }
+
+
+// Calc.java:
+
+// package tools;
+
+// public class Calc{
+//     public int add(int n1, int n2){
+//         return n1 + n2;
+//     }
+//     public int sub(int n1, int n2){
+//         return n1 - n2;
+//     }
+// }
+
+   
+// and in Hello.java:
+
+
+// import tools.AdvCalc; (because we are using AdvCalc here)
+
+// public class Sample{
+//     public static void main(String[] args) {
+//         AdvCalc obj = new AdvCalc();
+//         int res = obj.add(10,5);
+//         System.out.println(res);
+//         int res2 = obj.sub(10,5);
+//         System.out.println(res2);
+//         int res3 = obj.multi(10,5);
+//         System.out.println(res3);
+//         int res4 = obj.div(10,5);
+//         System.out.println(res4);
+//     }
+// }
+
+
