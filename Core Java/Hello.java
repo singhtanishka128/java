@@ -1799,57 +1799,107 @@
 
 
 
-class Laptop{
-        String model;
-        int price;
+// class Laptop{
+//         String model;
+//         int price;
 
-        public String toString(){
-           return model+":"+price;
-        }
-
-        
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + ((model == null) ? 0 : model.hashCode());
-            result = prime * result + price;
-            return result;
-        }
+//         public String toString(){
+//            return model+":"+price;
+//         }
 
         
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            Laptop other = (Laptop) obj;
-            if (model == null) {
-                if (other.model != null)
-                    return false;
-            } else if (!model.equals(other.model))
-                return false;
-            if (price != other.price)
-                return false;
-            return true;
-        }
+//         public int hashCode() {
+//             final int prime = 31;
+//             int result = 1;
+//             result = prime * result + ((model == null) ? 0 : model.hashCode());
+//             result = prime * result + price;
+//             return result;
+//         }
 
         
+//         public boolean equals(Object obj) {
+//             if (this == obj)
+//                 return true;
+//             if (obj == null)
+//                 return false;
+//             if (getClass() != obj.getClass())
+//                 return false;
+//             Laptop other = (Laptop) obj;
+//             if (model == null) {
+//                 if (other.model != null)
+//                     return false;
+//             } else if (!model.equals(other.model))
+//                 return false;
+//             if (price != other.price)
+//                 return false;
+//             return true;
+//         }
+// }
 
-}
 
-public class Hello{
-    public static void main(String[] args) {
-        Laptop obj1 = new Laptop();
-        obj1.model = "Lenevo yoga";
-        obj1.price = 1000;
-        Laptop obj2 = new Laptop();
-        obj2.model= "Lenevo yoga";
-        obj2.price= 1000;
-        boolean result = obj1.equals(obj2); 
-        System.out.println(result); 
-    }
-}
+
+// public class Hello{
+//     public static void main(String[] args) {
+//         Laptop obj1 = new Laptop();
+//         obj1.model = "Lenevo yoga";
+//         obj1.price = 1000;
+//         Laptop obj2 = new Laptop();
+//         obj2.model= "Lenevo yoga";
+//         obj2.price= 1000;
+//         boolean result = obj1.equals(obj2); 
+//         System.out.println(result); 
+//     }
+// }
 //to generate hashcodes, right click source action, generate hashcode 
 //similar for toString
+
+
+//typecasting
+//upcasting and downcasting
+// class A {
+//     public void show1(){
+//         System.out.println("in A show");
+//     }
+// }
+// class B extends A {
+//     public void show2(){
+//         System.out.println("in B show");
+//     }
+// }
+// public class Hello {
+//     public static void main(String[] args) {
+//         A obj = new B();
+//         //A obj = (A) new B(); upcasting this happens implicitly behind the scene
+
+//         obj.show1();
+//         //obj.show2();//thrwos error, object belongs to B, but reference variable is of A so this doesnt recognise B
+//         //to solve this, we do downcasting
+
+//         B obj1 = (B)obj; //obj is initially of type A so convert/downcasting it to type B
+//         obj1.show2();
+//     }
+// }
+
+
+
+//wrapper class - wrapper around a primitive type
+//java is not purely object oriented programming
+//for every primite data type, we have a class for it. and this class extends the object class
+
+//int num = 7; //primitive datatype
+// Integer num1 = 8; //reference datatype
+
+//assinging primitive to object type
+//bts-> Integer num1 = new Integer(num); //boxing-> storing primitive in wrapper object
+//Integer num1 = num; autoboxing
+
+//assigning objecttype to primitive
+// int num=7;
+// Integer num1 = num;
+// bts-> int num2= num1.intValue(); //unboxing
+// int num2= num1; //auto-unboxing
+
+// String str = "12";
+// int num3 = Integer.parseInt(str); //12 converting string to integer
+// System.out.println(num3 * 2); //24
+
