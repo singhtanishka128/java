@@ -871,6 +871,8 @@
 
 // Static method, how to access instance variables inside static methods?
 // static methods can be called with the help of classname (statically)
+// static methods in interfaces belong ONLY to the interface itself.
+// They are not passed down to the implementing class.
 // Static methods are not overridden.
 
 // class A {
