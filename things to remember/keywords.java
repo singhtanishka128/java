@@ -96,6 +96,29 @@ Top-level classes cannot be static.only public, abstract and final are permitted
 // Has no name
 // Used only once
 
+
+//why do we need anonymous innerclass?
+// It’s:
+// A class
+// With no name
+// Defined and instantiated in one step
+// Used only once
+// Example:
+// A obj = new A() {
+//     void show() {
+//         System.out.println("Hello");
+//     }
+// };
+// You just:
+// Created a new subclass of A
+// Overrode its method
+// Instantiated it
+// All in one expression
+// Why do we need Anonymous Inner Classes?
+// For one-time behavior customization
+// Sometimes you don’t want to permanently create a new subclass.
+
+
 //abstract class and anonymous inner class
 // Creating a new unnamed subclass of A
 // Immediately overriding all abstract methods
