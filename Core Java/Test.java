@@ -895,7 +895,7 @@
 // }
 //output A
 
-// we can only use static variables inside static methods.
+// static methods only use static vars
 // we cannot use instance variables inside static methods directly. we can do it indirectly by passing the object inside static method. 
 
 // class Water{
@@ -926,11 +926,11 @@
 // 	int price;
 // 	String taste;
 // 	static String edition;
-// 	Water(int price, String taste){
+// 	  Water(int price, String taste){
 // 		this.price=price;
 // 		this.taste=taste;
 // 		System.out.println("1 -> inside Constructor");
-// 	}
+// 	  }
 
 // 	static{  //static block for initialising static variables, is called only once no matter how many different objects call it whatever times.
 // 		edition="limited";
@@ -972,7 +972,7 @@
 // 		Class.forName("Hey");
 // 	}
 // }
-// //inside static block
+// output-> inside static block
 
 
 
