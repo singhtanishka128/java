@@ -170,8 +170,12 @@ every superclass in java extends the Object class
 
 
 package: 
-package foldername to specify xyz file is in this located folder
-import foldername.filename to access from different folder
+package foldername to specify xyz file is in this located folder  eg: package com.models; (folderName = com.models)
+import foldername.filename to access from different folder        eg: import com.models.Student; (Student file lives inside com.models)
 
+Classes inside the same package can directly access each other (if not private).
+
+Same package → no import needed
+Different package → import required
 
 */
